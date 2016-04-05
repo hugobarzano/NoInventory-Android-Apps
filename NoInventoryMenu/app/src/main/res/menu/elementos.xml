@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/buscar" android:title="@string/menu_buscar"
+        android:icon="@drawable/buscar" yourapp:showAsAction="ifRoom|withText"/>
+    <!--<item
+        android:id="@+id/cortar" android:title="@string/menu_cortar"
+        android:icon="@drawable/cortar" yourapp:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/copiar" android:title="@string/menu_copiar"
+        android:icon="@drawable/copiar" yourapp:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/eliminar" android:title="@string/menu_eliminar"
+        android:icon="@drawable/eliminar" yourapp:showAsAction="ifRoom|withText"/>
+    <item
+        android:id="@+id/compartir" android:title="@string/menu_compartir"
+        android:icon="@drawable/compartir" yourapp:showAsAction="ifRoom|withText"/>-->
+
+</menu>

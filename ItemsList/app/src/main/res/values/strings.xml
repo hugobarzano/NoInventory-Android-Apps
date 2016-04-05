@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ItemsList</string>
+    <string name="title_activity_item_lista">ItemLista</string>
+    <string name="lista_item">Lista Items</string>
+    <string name="lista_item2">Lista Items 2</string>
+    <string name="title_activity_item_lista2">ItemLista2</string>
+</resources>

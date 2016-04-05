@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BarcodeScanningApp</string>
+    <string name="scan">Scan</string>
+    <string name="title_activity_scaner">Scaner</string>
+    <string name="Scaner">Scaner</string>
+    <string name="nuevo_item">Nuevo Item</string>
+    <string name="Add">Add TO Invetory</string>
+    <string name="title_activity_item_list">ItemList</string>
+    <string name="title_activity_inventarios_list">InventariosList</string>
+    <string name="title_activity_escritor_nfc">Escritor_nfc</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_escritor_item_nfc">Escritor_item_nfc</string>
+</resources>
