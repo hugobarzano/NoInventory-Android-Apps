@@ -44,7 +44,7 @@ public class InventariosList extends AppCompatActivity {
             if (networkInfo != null && networkInfo.isConnected()) {
                 new JsonTask().
                         execute(
-                                new URL("http://192.168.1.100:8000/noinventory/inventariosJson/"));
+                                new URL("http://192.168.43.104:8000/noinventory/inventariosJson/"));
             } else {
                 Toast.makeText(this, "Error de conexión", Toast.LENGTH_LONG).show();
             }

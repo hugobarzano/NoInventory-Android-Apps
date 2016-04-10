@@ -3,20 +3,20 @@ package com.noinventory.pruebass;
 /**
  * Created by hugo on 5/04/16.
  */
-import android.widget.TextView;
+        import com.google.gson.Gson;
+        import com.google.gson.JsonSyntaxException;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.toolbox.HttpHeaderParser;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
+        import com.android.volley.AuthFailureError;
+        import com.android.volley.NetworkResponse;
+        import com.android.volley.ParseError;
+        import com.android.volley.Request;
+        import com.android.volley.Response;
+        import com.android.volley.Response.ErrorListener;
+        import com.android.volley.Response.Listener;
+        import com.android.volley.toolbox.HttpHeaderParser;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
+        import java.io.UnsupportedEncodingException;
+        import java.util.Map;
 
 
 public class GsonRequest<T> extends Request<T> {
@@ -24,18 +24,17 @@ public class GsonRequest<T> extends Request<T> {
     private final Gson gson = new Gson();
     private final Class<T> clazz;
     private final Map<String, String> headers;
-    private final  TextView texto;
-   // private final Listener<T> listener;
+    private final Listener<T> listener;
 
     /**
      * Se predefine para el uso de peticiones GET
      */
-    public GsonRequest(String url, Class<T> clazz, Map<String, String> headers, ErrorListener errorListener,TextView texto) {
+    public GsonRequest(String url, Class<T> clazz, Map<String, String> headers,
+                       Listener<T> listener, ErrorListener errorListener) {
         super(Method.GET, url, errorListener);
         this.clazz = clazz;
         this.headers = headers;
-        this.texto=texto;
-       // this.listener = listener;
+        this.listener = listener;
     }
 
     @Override
@@ -45,8 +44,7 @@ public class GsonRequest<T> extends Request<T> {
 
     @Override
     protected void deliverResponse(T response) {
-        //listener.onResponse(response);
-        this.texto.setText(response.toString());
+        listener.onResponse(response);
     }
 
     @Override

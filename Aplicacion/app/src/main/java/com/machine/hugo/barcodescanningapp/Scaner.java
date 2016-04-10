@@ -78,7 +78,7 @@ public class Scaner extends AppCompatActivity implements OnClickListener {
             if (networkInfo != null && networkInfo.isConnected()) {
                 new ReadInventarios().
                         execute(
-                                new URL("http://192.168.1.115:8000/noinventory/inventariosJson/"));
+                                new URL("http://192.168.43.104:8000/noinventory/inventariosJson/"));
             } else {
                 Toast.makeText(this, "Error de conexión", Toast.LENGTH_LONG).show();
             }
@@ -186,7 +186,7 @@ public class Scaner extends AppCompatActivity implements OnClickListener {
                 // Indicamos la URl a la que conextarse:
                 //URL url=new URL("\"http://192.168.1.115:8000/noinventory/addItemFromQr/\"");
                 //URL url=new URL("\"http://192.168.1.115:8000/noinventory/addItemFromQr/\"");
-                URL url=new URL("http://192.168.1.115:8000/noinventory/addItemFromQr/");
+                URL url=new URL("http://192.168.43.104:8000/noinventory/addItemFromQr/");
                 // Abrimos una conexión hacia esa URl, pero interpretado como una conex. HTTP
                 HttpURLConnection conexionHttp= (HttpURLConnection) url.openConnection();
                 // hay que decirle que vamos a enviar algo, par aque use POST:
@@ -269,7 +269,7 @@ public class Scaner extends AppCompatActivity implements OnClickListener {
                  httpHandler manejadorPost = new httpHandler();
                  String aux = scanContent;
                  String aux2 = inventario_selecionado;
-                 manejadorPost.post3("http://192.168.1.115:8000/noinventory/addItemFromQr/",aux,aux2);
+                 manejadorPost.post3("http://192.168.43.104:8000/noinventory/addItemFromQr/",aux,aux2);
                 //modo juanjo
                 //String aux = scanContent;
                 //AddItemFromQR tarea = new  AddItemFromQR(aux);

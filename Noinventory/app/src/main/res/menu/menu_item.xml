@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nfc" android:title="@string/menu_option_nfc">
+    </item>
+
+    <item android:id="@+id/otro" android:title="@string/menu_option_nfc">
+    </item>
+
+
+</menu>

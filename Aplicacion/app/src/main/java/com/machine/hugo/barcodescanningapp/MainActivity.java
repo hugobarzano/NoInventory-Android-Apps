@@ -76,7 +76,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
             }
             case R.id.nuevo_item: {
-                Uri webpage = Uri.parse("http://172.20.10.8:8000/noinventory/nuevoItem/");
+                Uri webpage = Uri.parse("http://192.168.43.104:8000/noinventory/nuevoItem/?organizacion=osl");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
 
                 // Verificar si hay aplicaciones disponibles

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.noinventory.noinventory">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.NFC" />
+    admin
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Principal"
+            android:label="@string/title_activity_principal"
+            android:parentActivityName=".Login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Login" />
+        </activity>
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".Login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Login" />
+        </activity>
+        <activity
+            android:name=".MisItems"
+            android:label="@string/title_activity_mis_items"
+            android:parentActivityName=".Principal"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Principal" />
+        </activity>
+        <activity
+            android:name=".ItemsOrganizacion"
+            android:label="@string/title_activity_items_organizacion"
+            android:parentActivityName=".Principal"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Principal" />
+        </activity>
+        <activity
+            android:name=".NFC_item_writer"
+            android:label="@string/title_activity_nfc_item_writer"
+            android:parentActivityName=".MisItems"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.MisItems" />
+        </activity>
+        <activity
+            android:name=".MisCatalogos"
+            android:label="@string/title_activity_mis_catalogos"
+            android:parentActivityName=".Principal"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Principal" />
+        </activity>
+        <activity
+            android:name=".Scaner"
+            android:label="@string/title_activity_scaner"
+            android:parentActivityName=".MisCatalogos"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.MisCatalogos" />
+        </activity>
+    </application>
+
+</manifest>
