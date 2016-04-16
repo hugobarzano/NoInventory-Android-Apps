@@ -9,4 +9,5 @@
     <string name="title_activity_nfc_item_writer">NFC_item_writer</string>
     <string name="title_activity_mis_catalogos">MisCatalogos</string>
     <string name="title_activity_scaner">Scaner</string>
+    <string name="title_activity_mis_items_pruebas">pruebas</string>
 </resources>

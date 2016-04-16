@@ -12,62 +12,32 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class ItemAdapter extends ArrayAdapter {
-    private RequestQueue requestQueue;
+    //private RequestQueue requestQueue;
     // Atributos
-    private String URL_BASE = "http://192.168.1.33:8000/noinventory";
-    private static final String URL_JSON = "/itemsJson/";
+
     private static final String TAG = "PostAdapterItem";
     List<Item> items;
 
-    public ItemAdapter(Context context,String clave,String valor) {
+
+    public ItemAdapter(Context context, JSONObject jsonObject) {
         super(context, 0);
 
-
+        items = parseJson(jsonObject);
         //Funcionaaaaaaaaaaaaaaaaaaaaaaaaaaaa///////////////////////
-        requestQueue = Volley.newRequestQueue(context);
-        Map<String, String> params = new HashMap<String, String>();
-        params.put(clave, valor);
-        if(clave.equals("username"))
-            params.put("flag", "True");
-        else
-            params.put("flag", "False");
+       // requestQueue = Volley.newRequestQueue(context);
 
-
-
-        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("Response: ", response.toString());
-                items = parseJson(response);
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError response) {
-                Log.d("Response: ", response.toString());
-            }
-        });
-        requestQueue.add(jsObjRequest);
     }
+
+
 
 
     public List<Item> parseJson(JSONObject jsonObject){

@@ -24,6 +24,7 @@
             android:label="@string/title_activity_principal"
             android:parentActivityName=".Login"
             android:theme="@style/AppTheme.NoActionBar">
+            <action android:name="android.intent.action.Principal" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Login" />
@@ -39,7 +40,7 @@
         </activity>
         <activity
             android:name=".MisItems"
-            android:label="@string/title_activity_mis_items"
+            android:label="@string/title_activity_mis_items_pruebas"
             android:parentActivityName=".Principal"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

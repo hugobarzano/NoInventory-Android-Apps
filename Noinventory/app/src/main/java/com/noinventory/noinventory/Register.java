@@ -9,18 +9,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String REGISTER_URL = "http://192.168.1.33:8000/noinventory/androidRegister/";
+    public static final String REGISTER_URL = "http://noinventory.cloudapp.net/noinventory/androidRegister/";
 
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
@@ -89,8 +87,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+       // RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //requestQueue.add(stringRequest);
+        gestorPeticiones.getCola().add(stringRequest);
     }
 
     @Override

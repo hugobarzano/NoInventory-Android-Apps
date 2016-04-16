@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">petshop</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_visor">visor</string>
-    <string name="show_pet_button" />
-</resources>

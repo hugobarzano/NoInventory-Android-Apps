@@ -11,11 +11,9 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -24,7 +22,7 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String LOGIN_URL = "http://192.168.1.33:8000/noinventory/androidLogin/";
+    public static final String LOGIN_URL = "http://noinventory.cloudapp.net/noinventory/androidLogin/";
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
 
@@ -107,8 +105,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        //RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //requestQueue.add(stringRequest);
+        gestorPeticiones.setCola(this);
+        gestorPeticiones.getCola().add(stringRequest);
     }
 
     private void openPrincipal(){

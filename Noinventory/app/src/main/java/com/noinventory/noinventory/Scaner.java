@@ -10,10 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
@@ -28,13 +26,13 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
 
     IntentResult scanningResult;
     String scanContent;
-    String inventario_selecionado;
+    String catalogo_selecionado;
 
 
-    private RequestQueue requestQueue;
+    //private RequestQueue requestQueue;
     String item;
     // Atributos
-    private String URL_BASE = "http://192.168.1.33:8000/noinventory";
+    private String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
     private static final String URL_JSON = "/addItemFromQr/";
     private static final String TAG = "PostQRtoCatalogo";
 
@@ -47,7 +45,7 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
         formatTxt = (TextView)findViewById(R.id.scan_format);
         contentTxt = (TextView)findViewById(R.id.scan_content);
         Intent intent = getIntent();
-        inventario_selecionado = intent.getStringExtra(MisCatalogos.ACTIVIDAD_SCANER);
+        catalogo_selecionado = intent.getStringExtra(MisCatalogos.ACTIVIDAD_SCANER);
         scanBtn.setOnClickListener(this);
 
 
@@ -68,8 +66,9 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
             formatTxt.setText("FORMAT: " + scanFormat);
             contentTxt.setText("CONTENT: " + scanContent);
 
-            requestQueue = Volley.newRequestQueue(this);
+            //requestQueue = Volley.newRequestQueue(this);
             Map<String, String> params = new HashMap<String, String>();
+            params.put("catalogo",catalogo_selecionado);
             params.put("scaner", scanContent);
             CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
 
@@ -81,11 +80,16 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
 
                 @Override
                 public void onErrorResponse(VolleyError response) {
+
                     Log.d("Response: ", response.toString());
+
+                        Toast toast = Toast.makeText(getApplicationContext(), "ADD OK! ", Toast.LENGTH_SHORT);
+                        toast.show();
+
                 }
             });
-            requestQueue.add(jsObjRequest);
-
+            //requestQueue.add(jsObjRequest);
+            gestorPeticiones.getCola().add(jsObjRequest);
         }
         else{
             Toast toast = Toast.makeText(getApplicationContext(),

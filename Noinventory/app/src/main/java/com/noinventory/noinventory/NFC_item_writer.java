@@ -12,16 +12,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
@@ -39,10 +35,10 @@ public class NFC_item_writer extends AppCompatActivity {
     private TextView a_escribir;
 
 
-    private RequestQueue requestQueue;
+    //private RequestQueue requestQueue;
     String item;
     // Atributos
-    private String URL_BASE = "http://192.168.1.33:8000/noinventory";
+    private String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
     private static final String URL_JSON = "/itemJson/";
     private static final String TAG = "PostNFCItem";
 
@@ -59,7 +55,7 @@ public class NFC_item_writer extends AppCompatActivity {
         String datos = intent.getStringExtra(MisItems.ACTIVIDAD_NFC);
         item=datos;
 
-        requestQueue = Volley.newRequestQueue(this);
+        //requestQueue = Volley.newRequestQueue(this);
         Map<String, String> params = new HashMap<String, String>();
         params.put("item_id", datos);
         CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
@@ -91,34 +87,13 @@ public class NFC_item_writer extends AppCompatActivity {
                 Log.d("Response: ", response.toString());
             }
         });
-        requestQueue.add(jsObjRequest);
-
+        //requestQueue.add(jsObjRequest);
+        gestorPeticiones.getCola().add(jsObjRequest);
 
         }
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 

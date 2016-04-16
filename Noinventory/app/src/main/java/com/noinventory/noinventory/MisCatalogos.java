@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +30,7 @@ public class MisCatalogos extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         // Crear y setear adaptador
-        adapter = new CatalogoAdapter(this, "username", datosUsuario.getNombre_usuario());
+        adapter = new CatalogoAdapter(this,gestorGlobal.getListaCatalogosUsuario());
         listView.setAdapter(adapter);
         //Asocio el menu contextual a la vista de la lista
         registerForContextMenu(listView);
@@ -70,26 +69,5 @@ public class MisCatalogos extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Principal extends AppCompatActivity implements OnClickListener {
@@ -66,6 +69,12 @@ public class Principal extends AppCompatActivity implements OnClickListener {
         escritor_nfc.setOnClickListener(this);
         escritor_items_nfc.setOnClickListener(this);
         log_out.setOnClickListener(this);
+
+
+        ////////////////////Pruebas///////////////////////7
+        gestorGlobal.setListaItemsUsuario(this);
+        gestorGlobal.setListaItemsOrganizacion(this);
+        gestorGlobal.setListaCatalogosUsuario(this);
     }
 
 
@@ -91,9 +100,8 @@ public class Principal extends AppCompatActivity implements OnClickListener {
                 break;
             }
             case R.id.lista_inventarios: {
-                //Intent intent = new Intent(this, InventariosList.class);
-                //intent.putExtra(ACTIVIDAD_SCANER, "DATOS ENVIADOS DESDE EL ACTIVITI MAIN");
-                //startActivity(intent);
+                Intent intent = new Intent(this, MisItems.class);
+                startActivity(intent);
                 break;
             }
             case R.id.escritor_nfc: {
@@ -121,6 +129,22 @@ public class Principal extends AppCompatActivity implements OnClickListener {
             }
         }
     }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.bookmark_menu:
+                Toast.makeText(this, "You have selected Bookmark Menu", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     /*
     //Menu de opciones
     @Override
