@@ -24,13 +24,19 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Detectar"
+        android:id="@+id/detectar" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Mis Items"
         android:id="@+id/mis_items" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Items de la Organizacion"
+        android:text="Items de la Organización"
         android:id="@+id/items_organizacion" />
 
 
@@ -43,20 +49,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lista Inventarios"
-        android:id="@+id/lista_inventarios"/>
+        android:text="Catalogos de la Organización"
+        android:id="@+id/catalogos_organizacion"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NFC"
-        android:id="@+id/escritor_nfc"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="NFC Items Writer"
-        android:id="@+id/escritor_items_nfc" />
 
     <Button
         android:layout_width="match_parent"

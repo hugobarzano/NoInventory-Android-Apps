@@ -18,13 +18,13 @@ public class Principal extends AppCompatActivity implements OnClickListener {
     public final static String ACTIVIDAD_SCANER = "com.machine.hugo.SCANER";
     private Button Scaner;
 
+    private Button detectar;
+
     private Button mis_items;
     private Button items_organizacion;
 
     private Button mis_catalogos;
-    private Button lista_inventarios;
-    private Button escritor_nfc;
-    private Button escritor_items_nfc;
+    private Button catalogos_organizacion;
     private Button log_out;
 
 
@@ -39,14 +39,15 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         //Obteniendo una instancia del boton show_pet_button
        // Scaner = (Button) findViewById(R.id.scaner);
+        detectar = (Button) findViewById(R.id.detectar);
+
 
         mis_items = (Button) findViewById(R.id.mis_items);
         items_organizacion = (Button) findViewById(R.id.items_organizacion);
 
         mis_catalogos = (Button) findViewById(R.id.mis_catalogos);
-        lista_inventarios = (Button) findViewById(R.id.lista_inventarios);
-        escritor_nfc = (Button) findViewById(R.id.escritor_nfc);
-        escritor_items_nfc = (Button) findViewById(R.id.escritor_items_nfc);
+        catalogos_organizacion = (Button) findViewById(R.id.catalogos_organizacion);
+
         log_out = (Button) findViewById(R.id.logoutButt);
 
 
@@ -60,14 +61,15 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         //Registrando la escucha sobre la actividad Main
         //Scaner.setOnClickListener(this);
+        detectar.setOnClickListener(this);
+
 
         mis_items.setOnClickListener(this);
         items_organizacion.setOnClickListener(this);
 
         mis_catalogos.setOnClickListener(this);
-        lista_inventarios.setOnClickListener(this);
-        escritor_nfc.setOnClickListener(this);
-        escritor_items_nfc.setOnClickListener(this);
+        catalogos_organizacion.setOnClickListener(this);
+
         log_out.setOnClickListener(this);
 
 
@@ -99,23 +101,12 @@ public class Principal extends AppCompatActivity implements OnClickListener {
                 startActivity(intent);
                 break;
             }
-            case R.id.lista_inventarios: {
+            case R.id.catalogos_organizacion: {
                 Intent intent = new Intent(this, MisItems.class);
                 startActivity(intent);
                 break;
             }
-            case R.id.escritor_nfc: {
-                //Intent intent = new Intent(this, Escritor_nfc.class);
-                //intent.putExtra(ACTIVIDAD_SCANER, "DATOS ENVIADOS DESDE EL ACTIVITI MAIN");
-                //startActivity(intent);
-                break;
-            }
-            case R.id.escritor_items_nfc: {
-                //Intent intent = new Intent(this, Escritor_nfc.class);
-                //intent.putExtra(ACTIVIDAD_SCANER, "DATOS ENVIADOS DESDE EL ACTIVITI MAIN");
-                //startActivity(intent);
-                break;
-            }
+
             case R.id.logoutButt: {
                 SharedPreferences preferences = getSharedPreferences("temp", getApplicationContext().MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
@@ -130,15 +121,16 @@ public class Principal extends AppCompatActivity implements OnClickListener {
         }
     }
 
-
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.bookmark_menu:
-                Toast.makeText(this, "You have selected Bookmark Menu", Toast.LENGTH_SHORT).show();
+            case R.id.update:
+                Toast.makeText(this, "updateeee", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

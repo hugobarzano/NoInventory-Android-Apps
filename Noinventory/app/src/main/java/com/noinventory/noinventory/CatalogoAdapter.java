@@ -24,6 +24,8 @@ public class CatalogoAdapter extends ArrayAdapter {
     //private RequestQueue requestQueue;
     // Atributoshttp://noinventory.cloudapp.net/noinventory
 
+
+
     private static final String TAG = "PostAdaptercatalogo";
     List<Catalogo> catalogos;
 

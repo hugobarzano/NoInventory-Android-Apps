@@ -28,11 +28,12 @@ public class gestorGlobal {
     }
 
     public static void setListaItemsUsuario(Context c) {
-        String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
+        String URL_BASE = "http://192.168.1.101:8000";
         String URL_JSON = "/itemsJson/";
         Map<String, String> params = new HashMap<String, String>();
 
         params.put("username", datosUsuario.getNombre_usuario());
+        params.put("organizacion", datosUsuario.getOrganizacion());
         params.put("flag", "True");
 
 
@@ -66,7 +67,7 @@ public class gestorGlobal {
     }
 
     public static void setListaItemsOrganizacion(Context c) {
-        String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
+        String URL_BASE = "http://192.168.1.101:8000";
         String URL_JSON = "/itemsJson/";
         Map<String, String> params = new HashMap<String, String>();
 
@@ -105,7 +106,7 @@ public class gestorGlobal {
     }
 
     public static void setListaCatalogosUsuario(Context c) {
-        String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
+        String URL_BASE = "http://192.168.1.101:8000";
         String URL_JSON = "/catalogosJson/";
 
 

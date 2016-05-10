@@ -2,12 +2,12 @@
     <string name="app_name">Noinventory</string>
     <string name="title_activity_principal">Principal</string>
     <string name="title_activity_register">Register</string>
-    <string name="title_activity_mis_items">MisItems</string>
+    <string name="title_activity_mis_items">Mis Items</string>
     <string name="action_settings">Opciones</string>
-    <string name="title_activity_items_organizacion">ItemsOrganizacion</string>
+    <string name="title_activity_items_organizacion">Items de la Organizacion</string>
     <string name="menu_option_nfc">Grabar NFC</string>
     <string name="title_activity_nfc_item_writer">NFC_item_writer</string>
-    <string name="title_activity_mis_catalogos">MisCatalogos</string>
+    <string name="title_activity_mis_catalogos">Mis Catalogos</string>
     <string name="title_activity_scaner">Scaner</string>
     <string name="title_activity_mis_items_pruebas">pruebas</string>
 </resources>

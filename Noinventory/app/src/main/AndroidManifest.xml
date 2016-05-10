@@ -22,8 +22,7 @@
         <activity
             android:name=".Principal"
             android:label="@string/title_activity_principal"
-            android:parentActivityName=".Login"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Login">
             <action android:name="android.intent.action.Principal" />
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -32,17 +31,15 @@
         <activity
             android:name=".Register"
             android:label="@string/title_activity_register"
-            android:parentActivityName=".Login"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Login">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Login" />
         </activity>
         <activity
             android:name=".MisItems"
-            android:label="@string/title_activity_mis_items_pruebas"
-            android:parentActivityName=".Principal"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_mis_items"
+            android:parentActivityName=".Principal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Principal" />
@@ -50,8 +47,7 @@
         <activity
             android:name=".ItemsOrganizacion"
             android:label="@string/title_activity_items_organizacion"
-            android:parentActivityName=".Principal"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Principal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Principal" />
@@ -68,8 +64,7 @@
         <activity
             android:name=".MisCatalogos"
             android:label="@string/title_activity_mis_catalogos"
-            android:parentActivityName=".Principal"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Principal">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Principal" />
