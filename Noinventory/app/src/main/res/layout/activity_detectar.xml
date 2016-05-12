@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.noinventory.noinventory.Detectar"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="177dp">
+        <TextView
+            android:textColor="#111111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:id="@+id/nombre"
+            />
+        <TextView
+            android:textColor="#111111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:id="@+id/descripcion"
+            />
+        <TextView
+            android:textColor="#111111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:id="@+id/fecha"
+            />
+        <TextView
+            android:textColor="#111111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Localizador"
+            android:id="@+id/localizador"
+            />
+    </LinearLayout>
+    <Button
+        style="@style/buttonStyle"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Detalles"
+        android:id="@+id/detalles" />
+
+
+
+
+    <EditText
+        style="@style/editText"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Texto a buscar"
+        android:id="@+id/busqueda" />
+    <Button
+        style="@style/buttonStyle"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:id="@+id/buscar" />
+    <Button
+        style="@style/buttonStyle"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escanear"
+        android:id="@+id/scaner" />
+
+
+
+
+
+
+
+
+</LinearLayout>

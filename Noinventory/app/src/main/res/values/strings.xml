@@ -10,4 +10,6 @@
     <string name="title_activity_scaner">Scaner</string>
     <string name="title_activity_add_nfcitem">AddNFCItem</string>
     <string name="title_activity_detalles_item">DetallesItem</string>
+    <string name="title_activity_detalles_catalogo">DetallesCatalogo</string>
+    <string name="title_activity_detectar">Detectar</string>
 </resources>

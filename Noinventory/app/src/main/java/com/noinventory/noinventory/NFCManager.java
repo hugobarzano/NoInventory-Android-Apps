@@ -125,7 +125,7 @@ public class NFCManager {
     }
 
     public NdefMessage createExternalMessage(String content) {
-        NdefRecord externalRecord = NdefRecord.createExternal("com.survivingwithandroid", "data", content.getBytes());
+        NdefRecord externalRecord = NdefRecord.createExternal("com.noinventory.noinventory", "data", content.getBytes());
 
         NdefMessage ndefMessage = new NdefMessage(new NdefRecord[] { externalRecord });
 

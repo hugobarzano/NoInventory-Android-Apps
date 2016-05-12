@@ -15,8 +15,6 @@ import android.widget.Toast;
 
 public class Principal extends AppCompatActivity implements OnClickListener {
 
-    public final static String ACTIVIDAD_SCANER = "com.machine.hugo.SCANER";
-    private Button Scaner;
 
     private Button detectar;
 
@@ -78,6 +76,11 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         switch (v.getId()) {
 
+            case R.id.detectar: {
+                Intent intent = new Intent(this, Detectar.class);
+                startActivity(intent);
+                break;
+            }
             case R.id.items: {
                 Intent intent = new Intent(this, Items.class);
                 startActivity(intent);

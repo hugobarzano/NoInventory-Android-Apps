@@ -115,7 +115,7 @@ public class Items extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.update:
                 //peticion
-                String URL_BASE = "http://192.168.1.101:8000";
+                String URL_BASE = "http://192.168.1.34:8000";
                 String URL_JSON = "/itemsJson/";
                 Map<String, String> params = new HashMap<String, String>();
 

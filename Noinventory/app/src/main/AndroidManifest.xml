@@ -83,7 +83,24 @@
         <activity
             android:name=".DetallesItem"
             android:label="@string/title_activity_detalles_item"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetallesCatalogo"
+            android:label="@string/title_activity_detalles_catalogo"
+            android:parentActivityName=".Catalogos"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Catalogos" />
+        </activity>
+        <activity
+            android:name=".Detectar"
+            android:label="@string/title_activity_detectar"
+            android:parentActivityName=".Principal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Principal" />
+        </activity>
     </application>
 
 </manifest>

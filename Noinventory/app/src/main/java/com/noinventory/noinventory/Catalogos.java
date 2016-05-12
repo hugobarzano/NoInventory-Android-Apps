@@ -33,6 +33,8 @@ public class Catalogos extends AppCompatActivity {
 
     public final static String ACTIVIDAD_SCANER = "com.machine.hugo.SCANER";
     public final static String ACTIVIDAD_NFC = "com.machine.hugo.NFC";
+    public final static String ACTIVIDAD_DETALLES_CATALOGO = "com.noinventory.noinventory.DETALLES_CATALOGO";
+
 
 
 
@@ -87,6 +89,13 @@ public class Catalogos extends AppCompatActivity {
                 Log.d("Nombre: ", c.getNombre());
                 intent = new Intent(this, AddNFCItem.class);
                 intent.putExtra(ACTIVIDAD_NFC, c.get_id());
+                startActivity(intent);
+                return true;
+            case R.id.detalles:
+                c=this.adapter.getItemFromAdapter(info.position);
+                Log.d("Nombre: ", c.getNombre());
+                intent = new Intent(this, DetallesCatalogo.class);
+                intent.putExtra(ACTIVIDAD_DETALLES_CATALOGO, c.get_id());
                 startActivity(intent);
                 return true;
 
