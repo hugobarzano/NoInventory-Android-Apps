@@ -20,11 +20,9 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
     private Button detectar;
 
-    private Button mis_items;
-    private Button items_organizacion;
+    private Button items;
 
-    private Button mis_catalogos;
-    private Button catalogos_organizacion;
+    private Button catalogos;
     private Button log_out;
 
 
@@ -42,11 +40,9 @@ public class Principal extends AppCompatActivity implements OnClickListener {
         detectar = (Button) findViewById(R.id.detectar);
 
 
-        mis_items = (Button) findViewById(R.id.mis_items);
-        items_organizacion = (Button) findViewById(R.id.items_organizacion);
+        items = (Button) findViewById(R.id.items);
 
-        mis_catalogos = (Button) findViewById(R.id.mis_catalogos);
-        catalogos_organizacion = (Button) findViewById(R.id.catalogos_organizacion);
+        catalogos = (Button) findViewById(R.id.catalogos);
 
         log_out = (Button) findViewById(R.id.logoutButt);
 
@@ -64,18 +60,15 @@ public class Principal extends AppCompatActivity implements OnClickListener {
         detectar.setOnClickListener(this);
 
 
-        mis_items.setOnClickListener(this);
-        items_organizacion.setOnClickListener(this);
+        items.setOnClickListener(this);
 
-        mis_catalogos.setOnClickListener(this);
-        catalogos_organizacion.setOnClickListener(this);
+        catalogos.setOnClickListener(this);
 
         log_out.setOnClickListener(this);
 
 
         ////////////////////Pruebas///////////////////////7
         gestorGlobal.setListaItemsUsuario(this);
-        gestorGlobal.setListaItemsOrganizacion(this);
         gestorGlobal.setListaCatalogosUsuario(this);
     }
 
@@ -85,24 +78,15 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         switch (v.getId()) {
 
-            case R.id.mis_items: {
-                Intent intent = new Intent(this, MisItems.class);
+            case R.id.items: {
+                Intent intent = new Intent(this, Items.class);
                 startActivity(intent);
                 break;
             }
-            case R.id.items_organizacion: {
-                Intent intent = new Intent(this, ItemsOrganizacion.class);
-                startActivity(intent);
-                break;
-            }
-            case R.id.mis_catalogos: {
-                Intent intent = new Intent(this, MisCatalogos.class);
+
+            case R.id.catalogos: {
+                Intent intent = new Intent(this, Catalogos.class);
                 //intent.putExtra(ACTIVIDAD_SCANER, "DATOS ENVIADOS DESDE EL ACTIVITI MAIN");
-                startActivity(intent);
-                break;
-            }
-            case R.id.catalogos_organizacion: {
-                Intent intent = new Intent(this, MisItems.class);
                 startActivity(intent);
                 break;
             }

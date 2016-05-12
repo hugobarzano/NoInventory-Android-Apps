@@ -7,12 +7,31 @@ public class Item {
     private String _id;
     private String nombre;
     private String descripcion;
-
-    public Item(String _id, String nombre, String descripcion) {
+    private String localizador;
+    private String fecha;
+    public Item(String _id, String nombre, String descripcion,String localizador,String fecha) {
         this._id = _id;
         this.nombre=nombre;
         this.descripcion = descripcion;
+        this.localizador=localizador;
+        this.fecha=fecha;
 
+    }
+
+    public String getLocalizador() {
+        return localizador;
+    }
+
+    public void setLocalizador(String localizador) {
+        this.localizador = localizador;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public String get_id() {

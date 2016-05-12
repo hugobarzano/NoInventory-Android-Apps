@@ -10,19 +10,9 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class NFC_item_writer extends AppCompatActivity {
 
@@ -38,59 +28,41 @@ public class NFC_item_writer extends AppCompatActivity {
     //private RequestQueue requestQueue;
     String item;
     // Atributos
-    private String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
-    private static final String URL_JSON = "/itemJson/";
-    private static final String TAG = "PostNFCItem";
+    //private String URL_BASE = "http://192.168.1.101";
+    //private static final String URL_JSON = "/itemJson/";
+   // private static final String TAG = "PostNFCItem";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfc_item_writer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
 
         nfcMger = new NFCManager(this);
         Intent intent = getIntent();
-        String datos = intent.getStringExtra(MisItems.ACTIVIDAD_NFC);
-        item=datos;
+        String localizador = intent.getStringExtra(Items.ACTIVIDAD_NFC);
+        item=localizador;
 
-        //requestQueue = Volley.newRequestQueue(this);
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("item_id", datos);
-        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+        //item = response.toString();
+        v = findViewById(R.id.mainLyt);
+        a_escribir= (TextView) findViewById(R.id.a_escribir);
+        a_escribir.setText(item);
 
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("Response: ", response.toString());
-                item = response.toString();
-                v = findViewById(R.id.mainLyt);
-                a_escribir= (TextView) findViewById(R.id.a_escribir);
-                a_escribir.setText(item);
-
-                message =  nfcMger.createTextMessage(response.toString());
+        message =  nfcMger.createTextMessage(item);
 
 
 
-                if (message != null) {
+        if (message != null) {
 
-                    dialog = new ProgressDialog(NFC_item_writer.this);
-                    dialog.setMessage("Tag NFC Tag please");
-                    dialog.show();;
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError response) {
-                Log.d("Response: ", response.toString());
-            }
-        });
-        //requestQueue.add(jsObjRequest);
-        gestorPeticiones.getCola().add(jsObjRequest);
-
+            dialog = new ProgressDialog(NFC_item_writer.this);
+            dialog.setMessage("Tag NFC Tag please");
+            dialog.show();;
         }
+
+
+    }
 
 
 

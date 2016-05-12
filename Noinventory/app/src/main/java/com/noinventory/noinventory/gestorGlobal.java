@@ -18,7 +18,6 @@ import java.util.Map;
 public class gestorGlobal {
 
     private static JSONObject listaItemsUsuario;
-    private static JSONObject listaItemsOrganizacion;
     private static JSONObject listaCatalogosUsuario;
 
 
@@ -62,43 +61,8 @@ public class gestorGlobal {
 
     }
 
-    public static JSONObject getListaItemsOrganizacion() {
-        return listaItemsOrganizacion;
-    }
-
-    public static void setListaItemsOrganizacion(Context c) {
-        String URL_BASE = "http://192.168.1.101:8000";
-        String URL_JSON = "/itemsJson/";
-        Map<String, String> params = new HashMap<String, String>();
-
-        params.put("organizacion", datosUsuario.getOrganizacion());
-        params.put("flag", "False");
 
 
-
-        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("Response: ", response.toString());
-                gestorGlobal.listaItemsOrganizacion = response;
-                //adapter = new ItemAdapter(c,response);
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError response) {
-                Log.d("Response: ", response.toString());
-            }
-        });
-        // RequestQueue requestQueue;
-        //requestQueue.add(jsObjRequest);
-        gestorPeticiones.setCola(c);
-        gestorPeticiones.getCola().add(jsObjRequest);
-
-
-    }
 
 
     public static JSONObject getListaCatalogosUsuario() {
@@ -112,6 +76,8 @@ public class gestorGlobal {
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", datosUsuario.getNombre_usuario());
+        params.put("organizacion", datosUsuario.getOrganizacion());
+
         params.put("flag", "True");
 
 

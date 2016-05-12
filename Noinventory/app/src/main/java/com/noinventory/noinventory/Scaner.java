@@ -32,7 +32,7 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
     //private RequestQueue requestQueue;
     String item;
     // Atributos
-    private String URL_BASE = "http://noinventory.cloudapp.net/noinventory";
+    private String URL_BASE = "http://192.168.1.101:8000";
     private static final String URL_JSON = "/addItemFromQr/";
     private static final String TAG = "PostQRtoCatalogo";
 
@@ -45,7 +45,7 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
         formatTxt = (TextView)findViewById(R.id.scan_format);
         contentTxt = (TextView)findViewById(R.id.scan_content);
         Intent intent = getIntent();
-        catalogo_selecionado = intent.getStringExtra(MisCatalogos.ACTIVIDAD_SCANER);
+        catalogo_selecionado = intent.getStringExtra(Catalogos.ACTIVIDAD_SCANER);
         scanBtn.setOnClickListener(this);
 
 
@@ -68,6 +68,7 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
 
             //requestQueue = Volley.newRequestQueue(this);
             Map<String, String> params = new HashMap<String, String>();
+            params.put("organizacion",datosUsuario.getOrganizacion());
             params.put("catalogo",catalogo_selecionado);
             params.put("scaner", scanContent);
             CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
@@ -80,11 +81,20 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
 
                 @Override
                 public void onErrorResponse(VolleyError response) {
-
+                    Toast toast;
                     Log.d("Response: ", response.toString());
+                    if(response.toString().equals("erro1")){
+                        toast = Toast.makeText(getApplicationContext(), "Item no valido! ", Toast.LENGTH_SHORT);
 
-                        Toast toast = Toast.makeText(getApplicationContext(), "ADD OK! ", Toast.LENGTH_SHORT);
-                        toast.show();
+                    }
+                    else if(response.toString().equals("error2")){
+                        toast = Toast.makeText(getApplicationContext(), "Catalogo no valido! ", Toast.LENGTH_SHORT);
+
+                    }
+                    else {
+                        toast = Toast.makeText(getApplicationContext(), "¡Exito! ", Toast.LENGTH_SHORT);
+                    }
+                    toast.show();
 
                 }
             });

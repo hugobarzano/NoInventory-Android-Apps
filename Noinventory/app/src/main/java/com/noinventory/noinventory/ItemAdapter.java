@@ -57,7 +57,9 @@ public class ItemAdapter extends ArrayAdapter {
                     Item item = new Item(
                             objeto.getString("_id"),
                             objeto.getString("nombre"),
-                            objeto.getString("descripcion"));
+                            objeto.getString("descripcion"),
+                            objeto.getString("localizador"),
+                            objeto.getString("fecha"));
 
 
                     items.add(item);
@@ -103,14 +105,14 @@ public class ItemAdapter extends ArrayAdapter {
         //Item item = items.getItems().get(position);
 
         // Obtener Views
-        TextView textoId = (TextView) listItemView.findViewById(R.id.id_item);
         TextView textoNombre = (TextView) listItemView.findViewById(R.id.nombre);
-        TextView textoDescripcion = (TextView) listItemView.findViewById(R.id.descripcion);
+        TextView textoFecha = (TextView) listItemView.findViewById(R.id.fecha);
+        TextView textoLocalizador = (TextView) listItemView.findViewById(R.id.localizador);
 
         // Actualizar los Views
-        textoId.setText(item.get_id());
         textoNombre.setText(item.getNombre());
-        textoDescripcion.setText(item.getDescripcion());
+        textoFecha.setText(item.getFecha());
+        textoLocalizador.setText(item.getLocalizador());
 
 
 

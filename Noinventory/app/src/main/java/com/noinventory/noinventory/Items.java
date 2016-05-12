@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,51 +23,88 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemsOrganizacion extends ActionBarActivity {
+public class Items extends ActionBarActivity {
 
     // Atributos
     ListView listView;
+    //adaptador con la lista de objetos item
     ItemAdapter adapter;
+    public final static String ACTIVIDAD_NFC = "com.noinventory.noinventory.NFC";
+    public final static String ACTIVIDAD_DETALLES = "com.noinventory.noinventory.DETALLES";
 
-    public final static String ACTIVIDAD_NFC = "com.machine.hugo.NFC";
     Context c;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mis_items);
+        setContentView(R.layout.activity_items);
         c=this.getBaseContext();
         // Obtener instancia de la lista
         listView= (ListView) findViewById(R.id.listView);
 
-        gestorGlobal.setListaItemsOrganizacion(this);
-
-        adapter = new ItemAdapter(this,gestorGlobal.getListaItemsOrganizacion());
+        // Crear y setear adaptador
+        //adapter = new ItemAdapter(this,"username",datosUsuario.getNombre_usuario());
+        gestorGlobal.setListaItemsUsuario(this);
+        adapter = new ItemAdapter(this,gestorGlobal.getListaItemsUsuario());
         listView.setAdapter(adapter);
+        //Asocio el menu contextual a la vista de la lista
         registerForContextMenu(listView);
 
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+                Toast.makeText(Items.this,
+                        "Item in position " + position + " clicked", Toast.LENGTH_LONG).show();
+            }
+        });*/
     }
+
+
+
+
+
+
+    //CReacion del menu contextual para cada item
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_item, menu);
+
+    }
+    //Controlo del elemento dle menu selecionado
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        Item i;
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.nfc:
-                Item i=this.adapter.getItemFromAdapter(info.position);
+                //AdapterView.AdapterContextMenuInfo info =(AdapterView.AdapterContextMenuInfo)menuInfo;
+                //menu.setHeaderTitle(lstLista.getAdapter().getItem(info.position).toString());
+                i=this.adapter.getItemFromAdapter(info.position);
                 Log.d("Nombre: ", i.getNombre());
-                Intent intent = new Intent(this, NFC_item_writer.class);
-                intent.putExtra(ACTIVIDAD_NFC, i.get_id());
+                intent = new Intent(this, NFC_item_writer.class);
+                intent.putExtra(ACTIVIDAD_NFC, i.getLocalizador());
                 startActivity(intent);
-
-
                 return true;
-            case R.id.otro:
-                // Tareas a realizar
+            case R.id.detalles:
+                i=this.adapter.getItemFromAdapter(info.position);
+                Log.d("Nombre: ", i.getNombre());
+                intent = new Intent(this, DetallesItem.class);
+                intent.putExtra(ACTIVIDAD_DETALLES, i.get_id());
+                startActivity(intent);
                 return true;
+
             default:
                 return super.onContextItemSelected(item);
         }
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -81,7 +121,7 @@ public class ItemsOrganizacion extends ActionBarActivity {
 
                 params.put("username", datosUsuario.getNombre_usuario());
                 params.put("organizacion", datosUsuario.getOrganizacion());
-                params.put("flag", "False");
+                params.put("flag", "True");
 
 
 
@@ -117,5 +157,6 @@ public class ItemsOrganizacion extends ActionBarActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 }

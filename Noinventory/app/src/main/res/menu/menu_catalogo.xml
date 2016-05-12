@@ -1,6 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/lector_qr" android:title="Lector QR">
+    <item android:id="@+id/lector_qr" android:title="Lector QR" >
+    </item>
+
+    <item android:id="@+id/lector_nfc" android:title="Lector NFC">
     </item>
 
 </menu>

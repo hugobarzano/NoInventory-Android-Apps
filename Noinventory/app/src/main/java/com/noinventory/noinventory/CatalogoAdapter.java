@@ -56,7 +56,8 @@ public class CatalogoAdapter extends ArrayAdapter {
                     Catalogo catalogo = new Catalogo(
                             objeto.getString("_id"),
                             objeto.getString("nombre"),
-                            objeto.getString("descripcion"));
+                            objeto.getString("descripcion"),
+                            objeto.getString("fecha"));
 
 
                     catalogos.add(catalogo);
@@ -102,14 +103,15 @@ public class CatalogoAdapter extends ArrayAdapter {
         //Item item = items.getItems().get(position);
 
         // Obtener Views
-        TextView textoId = (TextView) listItemView.findViewById(R.id.id_catalogo);
         TextView textoNombre = (TextView) listItemView.findViewById(R.id.nombre);
         TextView textoDescripcion = (TextView) listItemView.findViewById(R.id.descripcion);
+        TextView textoFecha = (TextView) listItemView.findViewById(R.id.fecha);
+
 
         // Actualizar los Views
-        textoId.setText(catalogo.get_id());
         textoNombre.setText(catalogo.getNombre());
         textoDescripcion.setText(catalogo.getDescripcion());
+        textoFecha.setText(catalogo.getFecha());
 
 
 

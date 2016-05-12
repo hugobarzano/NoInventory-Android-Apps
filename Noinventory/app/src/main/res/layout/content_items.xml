@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.noinventory.noinventory.ItemsOrganizacion"
-    tools:showIn="@layout/activity_items_organizacion">
+    tools:context=".Items"
+    tools:showIn="@layout/activity_items">
 
 </RelativeLayout>
