@@ -27,13 +27,14 @@ public class gestorGlobal {
     }
 
     public static void setListaItemsUsuario(Context c) {
-        String URL_BASE = "http://192.168.1.34:8000";
+        String URL_BASE = "http://192.168.1.33:8000";
         String URL_JSON = "/itemsJson/";
         Map<String, String> params = new HashMap<String, String>();
 
         params.put("username", datosUsuario.getNombre_usuario());
         params.put("organizacion", datosUsuario.getOrganizacion());
         params.put("flag", "True");
+        params.put("busqueda","");
 
 
 
@@ -70,13 +71,14 @@ public class gestorGlobal {
     }
 
     public static void setListaCatalogosUsuario(Context c) {
-        String URL_BASE = "http://192.168.1.34:8000";
+        String URL_BASE = "http://192.168.1.33:8000";
         String URL_JSON = "/catalogosJson/";
 
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("username", datosUsuario.getNombre_usuario());
         params.put("organizacion", datosUsuario.getOrganizacion());
+        params.put("busqueda","");
 
         params.put("flag", "True");
 

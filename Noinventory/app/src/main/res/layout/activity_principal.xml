@@ -29,17 +29,11 @@
         android:id="@+id/organizacionText"
         android:text="Organizacion"/>
 
-    <Button
-        style="@style/buttonStyle"
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Detectar"
-        android:id="@+id/detectar" />
 
     <Button
         style="@style/buttonStyle"
-
+        android:background="@drawable/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Items"
@@ -49,7 +43,7 @@
 
     <Button
         style="@style/buttonStyle"
-
+        android:background="@drawable/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Catalogos"
@@ -59,7 +53,7 @@
 
     <Button
         style="@style/buttonStyle"
-
+        android:background="@drawable/botones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LogOut"

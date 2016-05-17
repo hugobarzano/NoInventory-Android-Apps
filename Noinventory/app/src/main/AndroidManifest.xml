@@ -65,8 +65,7 @@
         <activity
             android:name=".Scaner"
             android:label="@string/title_activity_scaner"
-            android:parentActivityName=".Catalogos"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Catalogos">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Catalogos" />
@@ -74,8 +73,7 @@
         <activity
             android:name=".AddNFCItem"
             android:label="@string/title_activity_add_nfcitem"
-            android:parentActivityName=".Catalogos"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Catalogos">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Catalogos" />
@@ -92,14 +90,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Catalogos" />
-        </activity>
-        <activity
-            android:name=".Detectar"
-            android:label="@string/title_activity_detectar"
-            android:parentActivityName=".Principal">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.noinventory.noinventory.Principal" />
         </activity>
     </application>
 

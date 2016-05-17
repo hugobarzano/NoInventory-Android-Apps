@@ -19,7 +19,7 @@ public class DetallesCatalogo extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
-        webView.loadUrl("http://192.168.1.34:8000/catalogo/"+catalogo);
+        webView.loadUrl("http://192.168.1.33:8000/catalogo/"+catalogo);
         //webView.loadUrl("https://www.google.es/?gfe_rd=cr&ei=2U00V6HBIK2p8wfdsoW4BQ&gws_rd=ssl");
 
         webView.setWebViewClient(new WebViewClient());

@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">Noinventory</string>
+    <string name="app_name">No-Inventory</string>
     <string name="title_activity_principal">Principal</string>
-    <string name="title_activity_register">Register</string>
+    <string name="title_activity_register">Registro</string>
     <string name="title_activity_mis_items">Items</string>
     <string name="action_settings">Opciones</string>
-    <string name="menu_option_nfc">Grabar NFC</string>
+    <string name="menu_option_nfc">Escribir NFC</string>
     <string name="title_activity_nfc_item_writer">NFC_item_writer</string>
-    <string name="title_activity_mis_catalogos">Catalogos</string>
+    <string name="title_activity_mis_catalogos">Catálogos</string>
     <string name="title_activity_scaner">Scaner</string>
-    <string name="title_activity_add_nfcitem">AddNFCItem</string>
-    <string name="title_activity_detalles_item">DetallesItem</string>
-    <string name="title_activity_detalles_catalogo">DetallesCatalogo</string>
+    <string name="title_activity_add_nfcitem"> Agregar Item via NFC</string>
+    <string name="title_activity_detalles_item">Detalles Item</string>
+    <string name="title_activity_detalles_catalogo">Detalles Catalogo</string>
     <string name="title_activity_detectar">Detectar</string>
 </resources>

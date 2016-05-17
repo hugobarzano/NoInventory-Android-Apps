@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,10 +25,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Catalogos extends AppCompatActivity {
+public class Catalogos extends AppCompatActivity implements View.OnClickListener {
 
     // Atributos
     ListView listView;
+    private EditText busqueda;
+    private Button buscar;
     //adaptador con la lista de objetos item
     CatalogoAdapter adapter;
     Context c;
@@ -45,12 +49,16 @@ public class Catalogos extends AppCompatActivity {
         setContentView(R.layout.activity_catalogos);
 
         // Obtener instancia de la lista
+        busqueda = (EditText) findViewById(R.id.busqueda);
+        buscar = (Button) findViewById(R.id.buscar);
         listView = (ListView) findViewById(R.id.listView);
 
         // Crear y setear adaptador
         adapter = new CatalogoAdapter(this,gestorGlobal.getListaCatalogosUsuario());
         listView.setAdapter(adapter);
         c=this.getBaseContext();
+        buscar.setOnClickListener(this);
+
         //Asocio el menu contextual a la vista de la lista
         registerForContextMenu(listView);
 
@@ -105,7 +113,7 @@ public class Catalogos extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main2, menu);
         return true;
     }
     @Override
@@ -113,14 +121,14 @@ public class Catalogos extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.update:
                 //peticion
-                String URL_BASE = "http://192.168.1.34:8000";
+                String URL_BASE =  "http://192.168.1.33:8000";
                 String URL_JSON = "/catalogosJson/";
                 Map<String, String> params = new HashMap<String, String>();
 
                 params.put("username", datosUsuario.getNombre_usuario());
                 params.put("organizacion", datosUsuario.getOrganizacion());
                 params.put("flag", "True");
-
+                params.put("busqueda","");
 
 
                 CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
@@ -157,4 +165,51 @@ public class Catalogos extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.buscar: {
+                String URL_BASE =  "http://192.168.1.33:8000";
+                String URL_JSON = "/catalogosJson/";
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("username", datosUsuario.getNombre_usuario());
+                params.put("organizacion", datosUsuario.getOrganizacion());
+                params.put("flag", "True");
+                params.put("busqueda",busqueda.getText().toString());
+
+
+
+                CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+                        //actualizar lista
+                        adapter = new CatalogoAdapter(c,response);
+                        listView.setAdapter(adapter);
+                        //Asocio el menu contextual a la vista de la lista
+                        registerForContextMenu(listView);
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError response) {
+                        Log.d("Response: ", response.toString());
+                    }
+                });
+                gestorPeticiones.setCola(c);
+                gestorPeticiones.getCola().add(jsObjRequest);
+
+
+
+
+
+                Toast.makeText(this, "Busqueda Realizada", Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+    }
 }

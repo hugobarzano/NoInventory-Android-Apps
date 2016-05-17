@@ -16,7 +16,6 @@ import android.widget.Toast;
 public class Principal extends AppCompatActivity implements OnClickListener {
 
 
-    private Button detectar;
 
     private Button items;
 
@@ -35,7 +34,6 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         //Obteniendo una instancia del boton show_pet_button
        // Scaner = (Button) findViewById(R.id.scaner);
-        detectar = (Button) findViewById(R.id.detectar);
 
 
         items = (Button) findViewById(R.id.items);
@@ -55,7 +53,6 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         //Registrando la escucha sobre la actividad Main
         //Scaner.setOnClickListener(this);
-        detectar.setOnClickListener(this);
 
 
         items.setOnClickListener(this);
@@ -76,11 +73,7 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
         switch (v.getId()) {
 
-            case R.id.detectar: {
-                Intent intent = new Intent(this, Detectar.class);
-                startActivity(intent);
-                break;
-            }
+
             case R.id.items: {
                 Intent intent = new Intent(this, Items.class);
                 startActivity(intent);
@@ -110,7 +103,7 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main3, menu);
         return true;
     }
     @Override
