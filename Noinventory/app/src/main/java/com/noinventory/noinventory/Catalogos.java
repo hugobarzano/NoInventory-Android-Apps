@@ -121,7 +121,7 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
         switch (item.getItemId()) {
             case R.id.update:
                 //peticion
-                String URL_BASE =  "http://192.168.1.33:8000";
+                String URL_BASE =  "http://noinventory.cloudapp.net:80";
                 String URL_JSON = "/catalogosJson/";
                 Map<String, String> params = new HashMap<String, String>();
 
@@ -170,7 +170,7 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
 
             case R.id.buscar: {
-                String URL_BASE =  "http://192.168.1.33:8000";
+                String URL_BASE =  "http://noinventory.cloudapp.net:80";
                 String URL_JSON = "/catalogosJson/";
                 Map<String, String> params = new HashMap<String, String>();
 

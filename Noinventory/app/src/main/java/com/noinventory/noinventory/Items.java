@@ -51,6 +51,9 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
     ItemAdapter adapter;
     public final static String ACTIVIDAD_NFC = "com.noinventory.noinventory.NFC";
     public final static String ACTIVIDAD_DETALLES = "com.noinventory.noinventory.DETALLES";
+    public final static int REQUEST_WEB_P = 2;
+    public final static int REQUEST_WEB_C = 3;
+
 
     Context c;
 
@@ -99,7 +102,6 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
 
 
 
-
     //CReacion del menu contextual para cada item
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -130,7 +132,8 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
                 Log.d("Nombre: ", i.getNombre());
                 intent = new Intent(this, DetallesItem.class);
                 intent.putExtra(ACTIVIDAD_DETALLES, i.get_id());
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_WEB_P);
+                //startActivity(intent);
                 return true;
 
             default:
@@ -151,7 +154,7 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
                // break;
             }
             case R.id.update:
-                String URL_BASE = "http://192.168.1.33:8000";
+                String URL_BASE = "http://noinventory.cloudapp.net:80";
                 String URL_JSON = "/itemsJson/";
                 Map<String, String> params = new HashMap<String, String>();
 
@@ -190,54 +193,58 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
         }
     }
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if (scanningResult != null) {
-            String scanContent = scanningResult.getContents();
-            String scanFormat = scanningResult.getFormatName();
-            String URL_BASE = "http://192.168.1.33:8000";
-            String URL_JSON = "/itemsJson/";
-            Map<String, String> params = new HashMap<String, String>();
-
-            params.put("username", datosUsuario.getNombre_usuario());
-            params.put("organizacion", datosUsuario.getOrganizacion());
-            params.put("flag", "True");
-            params.put("busqueda",scanContent);
-
-
-
-            CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
-
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.d("Response: ", response.toString());
-                    //actualizar lista
-                    adapter = new ItemAdapter(c,response);
-                    listView.setAdapter(adapter);
-                    //Asocio el menu contextual a la vista de la lista
-                    registerForContextMenu(listView);
-
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError response) {
-                    Log.d("Response: ", response.toString());
-                }
-            });
-            gestorPeticiones.setCola(c);
-            gestorPeticiones.getCola().add(jsObjRequest);
-
-
-
-
-
-            Toast.makeText(this, "Busqueda Realizada", Toast.LENGTH_SHORT).show();
+        if (requestCode == REQUEST_WEB_P) {
+            if (resultCode == REQUEST_WEB_C) {
+                Toast.makeText(this, "Volviendo de entre los muertos", Toast.LENGTH_SHORT).show();
+            }
 
         }
-        else{
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "No hay datos tio!", Toast.LENGTH_SHORT);
-            toast.show();
+
+        else {
+            scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+            if (scanningResult != null) {
+                String scanContent = scanningResult.getContents();
+                String scanFormat = scanningResult.getFormatName();
+                String URL_BASE = "http://noinventory.cloudapp.net:80";
+                String URL_JSON = "/itemsJson/";
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("username", datosUsuario.getNombre_usuario());
+                params.put("organizacion", datosUsuario.getOrganizacion());
+                params.put("flag", "True");
+                params.put("busqueda", scanContent);
+
+
+                CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("Response: ", response.toString());
+                        //actualizar lista
+                        adapter = new ItemAdapter(c, response);
+                        listView.setAdapter(adapter);
+                        //Asocio el menu contextual a la vista de la lista
+                        registerForContextMenu(listView);
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError response) {
+                        Log.d("Response: ", response.toString());
+                    }
+                });
+                gestorPeticiones.setCola(c);
+                gestorPeticiones.getCola().add(jsObjRequest);
+
+
+                Toast.makeText(this, "Busqueda Realizada", Toast.LENGTH_SHORT).show();
+
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "No hay datos tio!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
     }
 
@@ -366,7 +373,7 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
         @Override
         protected void onPostExecute(String result) {
             if (result != null) {
-                String URL_BASE = "http://192.168.1.33:8000";
+                String URL_BASE = "http://noinventory.cloudapp.net:80";
                 String URL_JSON = "/itemsJson/";
                 Map<String, String> params = new HashMap<String, String>();
 
@@ -413,7 +420,7 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
 
             case R.id.buscar: {
                 //peticion
-                String URL_BASE = "http://192.168.1.33:8000";
+                String URL_BASE = "http://noinventory.cloudapp.net:80";
                 String URL_JSON = "/itemsJson/";
                 Map<String, String> params = new HashMap<String, String>();
 

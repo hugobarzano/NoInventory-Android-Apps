@@ -19,12 +19,21 @@ public class DetallesItem extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
-        webView.loadUrl("http://192.168.1.33:8000/itemAndroid/"+item+"?organizacion="+datosUsuario.getOrganizacion());
+        webView.loadUrl("http://noinventory.cloudapp.net:80/itemAndroid/"+item+"?organizacion="+datosUsuario.getOrganizacion());
         //webView.loadUrl("https://www.google.es/?gfe_rd=cr&ei=2U00V6HBIK2p8wfdsoW4BQ&gws_rd=ssl");
 
         webView.setWebViewClient(new WebViewClient());
 
         }
 
+    @Override
+    public void onBackPressed(){
+        gestorGlobal.setListaItemsUsuario(this);
+        setResult(RESULT_OK, null);
+        this.finish();
 
     }
+
+
+
+}

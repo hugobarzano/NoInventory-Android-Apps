@@ -27,7 +27,7 @@ public class gestorGlobal {
     }
 
     public static void setListaItemsUsuario(Context c) {
-        String URL_BASE = "http://192.168.1.33:8000";
+        String URL_BASE = "http://noinventory.cloudapp.net:80";
         String URL_JSON = "/itemsJson/";
         Map<String, String> params = new HashMap<String, String>();
 
@@ -71,7 +71,7 @@ public class gestorGlobal {
     }
 
     public static void setListaCatalogosUsuario(Context c) {
-        String URL_BASE = "http://192.168.1.33:8000";
+        String URL_BASE = "http://noinventory.cloudapp.net:80";
         String URL_JSON = "/catalogosJson/";
 
 
