@@ -1,7 +1,6 @@
 package com.noinventory.noinventory;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,27 +19,22 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DetallesItem extends AppCompatActivity {
+public class NuevoItem extends AppCompatActivity {
     Context c;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalles_item);
-        Intent intent = getIntent();
-        String item = intent.getStringExtra(Items.ACTIVIDAD_DETALLES);
+        setContentView(R.layout.activity_nuevo_item);
         c=this.getBaseContext();
-
         WebView webView = (WebView) this.findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
-        webView.loadUrl("http://noinventory.cloudapp.net/itemAndroid/"+item+"?organizacion="+datosUsuario.getOrganizacion());
-        //webView.loadUrl("https://www.google.es/?gfe_rd=cr&ei=2U00V6HBIK2p8wfdsoW4BQ&gws_rd=ssl");
-
+        webView.loadUrl("http://noinventory.cloudapp.net/nuevoItemAndroid/?organizacion="+ datosUsuario.getOrganizacion()+"&usuario="+datosUsuario.getNombre_usuario());
         webView.setWebViewClient(new WebViewClient());
 
-        }
-
+    }
     @Override
     public void onBackPressed(){
         String URL_BASE = "http://noinventory.cloudapp.net";
@@ -63,7 +57,7 @@ public class DetallesItem extends AppCompatActivity {
                 ItemAdapter adapter = new ItemAdapter(c,response);
                 Items.getListView().setAdapter(adapter);
                 //Asocio el menu contextual a la vista de la lista
-               // registerForContextMenu(listView);
+                // registerForContextMenu(listView);
 
             }
         }, new Response.ErrorListener() {
@@ -78,8 +72,8 @@ public class DetallesItem extends AppCompatActivity {
         Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
         this.finish();
         //gestorGlobal.setListaItemsUsuario(this);
-       // ItemAdapter adapter = new ItemAdapter(this,gestorGlobal.getListaItemsUsuario());
-       // Items.getListView().setAdapter(adapter);
+        // ItemAdapter adapter = new ItemAdapter(this,gestorGlobal.getListaItemsUsuario());
+        // Items.getListView().setAdapter(adapter);
 
     }
     @Override
@@ -97,7 +91,4 @@ public class DetallesItem extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-
 }

@@ -32,7 +32,7 @@ public class Scaner extends AppCompatActivity implements View.OnClickListener {
     //private RequestQueue requestQueue;
     String item;
     // Atributos
-    private String URL_BASE = "http://noinventory.cloudapp.net:80";
+    private String URL_BASE =  "http://noinventory.cloudapp.net";
     private static final String URL_JSON = "/addItemFromQr/";
     private static final String TAG = "PostQRtoCatalogo";
 

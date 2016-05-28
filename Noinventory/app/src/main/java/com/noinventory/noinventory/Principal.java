@@ -63,8 +63,8 @@ public class Principal extends AppCompatActivity implements OnClickListener {
 
 
         ////////////////////Pruebas///////////////////////7
-        gestorGlobal.setListaItemsUsuario(this);
-        gestorGlobal.setListaCatalogosUsuario(this);
+        //gestorGlobal.setListaItemsUsuario(this);
+        //gestorGlobal.setListaCatalogosUsuario(this);
     }
 
 
@@ -110,7 +110,7 @@ public class Principal extends AppCompatActivity implements OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.update:
-                Toast.makeText(this, "updateeee", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "principal", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

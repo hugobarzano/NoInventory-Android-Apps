@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String LOGIN_URL ="http://noinventory.cloudapp.net:80/androidLogin/";
+    public static final String LOGIN_URL = "http://noinventory.cloudapp.net/androidLogin/";
     public static final String KEY_USERNAME="username";
     public static final String KEY_PASSWORD="password";
 

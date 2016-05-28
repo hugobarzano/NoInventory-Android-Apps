@@ -3,8 +3,11 @@ package com.noinventory.noinventory;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public class DetallesCatalogo extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class DetallesCatalogo extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
-        webView.loadUrl("http://noinventory.cloudapp.net:80/catalogo/"+catalogo);
+        webView.loadUrl("http://noinventory.cloudapp.net/catalogoAndroid/"+catalogo+"?organizacion="+datosUsuario.getOrganizacion());
         //webView.loadUrl("https://www.google.es/?gfe_rd=cr&ei=2U00V6HBIK2p8wfdsoW4BQ&gws_rd=ssl");
 
         webView.setWebViewClient(new WebViewClient());
@@ -27,9 +30,26 @@ public class DetallesCatalogo extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
-        gestorGlobal.setListaItemsUsuario(this);
+        gestorGlobal.setListaCatalogosUsuario(this);
+        CatalogoAdapter adapter = new CatalogoAdapter(this,gestorGlobal.getListaCatalogosUsuario());
+        Catalogos.getListView().setAdapter(adapter);
         this.finish();
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main3, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.update:
+                Toast.makeText(this, "detalles", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

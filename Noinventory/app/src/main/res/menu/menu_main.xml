@@ -5,9 +5,16 @@
 
     <item
         style="@style/menu"
+        android:id="@+id/nuevo"
+        android:orderInCategory="100"
+        android:title="Nuevo"
+        app:showAsAction="never" />
+
+    <item
+        style="@style/menu"
 
         android:id="@+id/update"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="Actualizar"
         app:showAsAction="never" />
 
@@ -15,7 +22,7 @@
         style="@style/menu"
 
         android:id="@+id/scaner"
-        android:orderInCategory="100"
+        android:orderInCategory="102"
         android:title="Escanear"
         app:showAsAction="never" />
 </menu>

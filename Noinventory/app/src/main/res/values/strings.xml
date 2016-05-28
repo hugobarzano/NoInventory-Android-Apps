@@ -12,4 +12,6 @@
     <string name="title_activity_detalles_item">Detalles Item</string>
     <string name="title_activity_detalles_catalogo">Detalles Catalogo</string>
     <string name="title_activity_detectar">Detectar</string>
+    <string name="title_activity_nuevo_item">NuevoItem</string>
+    <string name="title_activity_nuevo_catalogo">NuevoCatalogo</string>
 </resources>

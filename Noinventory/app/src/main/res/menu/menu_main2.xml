@@ -11,5 +11,13 @@
         android:title="Actualizar"
         app:showAsAction="never" />
 
+    <item
+        style="@style/menu"
+
+        android:id="@+id/nuevo"
+        android:orderInCategory="100"
+        android:title="Nuevo"
+        app:showAsAction="never" />
+
 
 </menu>

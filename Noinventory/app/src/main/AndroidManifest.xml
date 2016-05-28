@@ -40,8 +40,8 @@
         <activity
             android:name=".Items"
             android:label="@string/title_activity_mis_items"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Principal">
+            android:parentActivityName=".Principal"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Principal" />
@@ -58,8 +58,8 @@
         <activity
             android:name=".Catalogos"
             android:label="@string/title_activity_mis_catalogos"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Principal">
+            android:parentActivityName=".Principal"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.noinventory.noinventory.Principal" />
@@ -82,11 +82,26 @@
         </activity>
         <activity
             android:name=".DetallesItem"
-            android:label="@string/title_activity_detalles_item"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_detalles_item" />
         <activity
             android:name=".DetallesCatalogo"
             android:label="@string/title_activity_detalles_catalogo"
+            android:parentActivityName=".Catalogos">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Catalogos" />
+        </activity>
+        <activity
+            android:name=".NuevoItem"
+            android:label="@string/title_activity_nuevo_item"
+            android:parentActivityName=".Items">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.noinventory.noinventory.Items" />
+        </activity>
+        <activity
+            android:name=".NuevoCatalogo"
+            android:label="@string/title_activity_nuevo_catalogo"
             android:parentActivityName=".Catalogos"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

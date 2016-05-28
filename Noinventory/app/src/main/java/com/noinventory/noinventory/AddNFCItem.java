@@ -33,7 +33,7 @@ public class AddNFCItem extends AppCompatActivity {
     public static final String MIME_TEXT_PLAIN = "text/plain";
     public static final String TAG = "NfcTag";
 
-    private String URL_BASE = "http://noinventory.cloudapp.net:80";
+    private String URL_BASE = "http://noinventory.cloudapp.net";
     private static final String URL_JSON = "/addItemFromNFC/";
     private  String catalogo_selecionado;
     private TextView mensaje;

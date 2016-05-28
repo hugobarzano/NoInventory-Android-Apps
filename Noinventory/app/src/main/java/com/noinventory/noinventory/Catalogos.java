@@ -27,8 +27,16 @@ import java.util.Map;
 
 public class Catalogos extends AppCompatActivity implements View.OnClickListener {
 
+    public static ListView getListView() {
+        return listView;
+    }
+
+    public static void setListView(ListView listView) {
+        Catalogos.listView = listView;
+    }
+
     // Atributos
-    ListView listView;
+    public static ListView listView;
     private EditText busqueda;
     private Button buscar;
     //adaptador con la lista de objetos item
@@ -52,11 +60,45 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
         busqueda = (EditText) findViewById(R.id.busqueda);
         buscar = (Button) findViewById(R.id.buscar);
         listView = (ListView) findViewById(R.id.listView);
+        c=this.getBaseContext();
+
+
+        String URL_BASE =  "http://noinventory.cloudapp.net";
+        String URL_JSON = "/catalogosJson/";
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("username", datosUsuario.getNombre_usuario());
+        params.put("organizacion", datosUsuario.getOrganizacion());
+        params.put("flag", "True");
+        params.put("busqueda","");
+
+
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Response: ", response.toString());
+                //actualizar lista
+                adapter = new CatalogoAdapter(c,response);
+                listView.setAdapter(adapter);
+                //Asocio el menu contextual a la vista de la lista
+                registerForContextMenu(listView);
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError response) {
+                Log.d("Response: ", response.toString());
+            }
+        });
+        gestorPeticiones.setCola(c);
+        gestorPeticiones.getCola().add(jsObjRequest);
+        Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
 
         // Crear y setear adaptador
-        adapter = new CatalogoAdapter(this,gestorGlobal.getListaCatalogosUsuario());
-        listView.setAdapter(adapter);
-        c=this.getBaseContext();
+        //adapter = new CatalogoAdapter(this,gestorGlobal.getListaCatalogosUsuario());
+        //listView.setAdapter(adapter);
         buscar.setOnClickListener(this);
 
         //Asocio el menu contextual a la vista de la lista
@@ -119,9 +161,13 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.nuevo:
+                Intent intent = new Intent(this, NuevoCatalogo.class);
+                this.startActivity(intent);
+                return true;
             case R.id.update:
                 //peticion
-                String URL_BASE =  "http://noinventory.cloudapp.net:80";
+                String URL_BASE =  "http://noinventory.cloudapp.net";
                 String URL_JSON = "/catalogosJson/";
                 Map<String, String> params = new HashMap<String, String>();
 
@@ -170,7 +216,7 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
 
             case R.id.buscar: {
-                String URL_BASE =  "http://noinventory.cloudapp.net:80";
+                String URL_BASE = "http://noinventory.cloudapp.net";
                 String URL_JSON = "/catalogosJson/";
                 Map<String, String> params = new HashMap<String, String>();
 
