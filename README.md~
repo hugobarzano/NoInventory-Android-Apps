@@ -6,6 +6,8 @@
 ###Descripción
 Extensión de la plataforma de gestión de inventariado [No-Inventory](https://github.com/hugobarzano/NoInventory). Es la encargada de la tareas de clasificación dentro del almacen. Permite leer/escribir los codigos de barras, codigos qr o etiquetas nfc que identifican a los objetos.
 
+Los mockups de baja ficelidad pueden descargarse [aquí](https://www.dropbox.com/s/f5tzxc2axhd8pi2/NoInventory-Android-App.pdf?dl=1)
+
 Gestión de Items:
 
 	-Creación
