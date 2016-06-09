@@ -32,8 +32,13 @@
     <style name="buttonStyle2">
         <item name="android:textColor">#111111</item>
         <item name="android:background">@color/colorFondo</item>
+    </style>
 
-
+    <style name="texto" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">30sp</item>
     </style>
 
     <style name="editText">
@@ -44,6 +49,7 @@
     <style name="list">
         <item name="android:dividerHeight">3dp</item>
         <item name="android:divider">#ffffff</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:background">@color/colorFondo</item>
 
     </style>

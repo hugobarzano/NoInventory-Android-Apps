@@ -16,6 +16,7 @@
 
 
     <TextView
+        style="@style/texto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/usernameText"
@@ -24,6 +25,7 @@
 
 
     <TextView
+        style="@style/texto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/organizacionText"
