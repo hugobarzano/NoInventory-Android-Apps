@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Pruebass</string>
-    <string name="action_settings">Opciones</string>
-    <string name="menu_option_edit">Editar</string>
-    <string name="menu_option_delete">Borrar</string>
-</resources>
