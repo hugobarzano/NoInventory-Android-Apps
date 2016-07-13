@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/menu"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        style="@style/menu"
+
+        android:id="@+id/update"
+        android:orderInCategory="100"
+        android:title="Actualizar"
+        app:showAsAction="never" />
+
+    <item
+        style="@style/menu"
+
+        android:id="@+id/nuevo"
+        android:orderInCategory="100"
+        android:title="Nuevo"
+        app:showAsAction="never" />
+
+
+</menu>
