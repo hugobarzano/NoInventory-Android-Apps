@@ -288,12 +288,45 @@ public class Items extends ActionBarActivity implements View.OnClickListener {
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
 
         //Es necesario que la actividad se desarrolle en segundo plano o se producirá una excepción
         setupForegroundDispatch(this, mNfcAdapter);
+        String URL_BASE = "http://noinventory.cloudapp.net";
+        String URL_JSON = "/itemsJson/";
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("username", datosUsuario.getNombre_usuario());
+        params.put("organizacion", datosUsuario.getOrganizacion());
+        params.put("flag", "True");
+        params.put("busqueda", "");
+
+
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Response: ", response.toString());
+                //actualizar lista
+                adapter = new ItemAdapter(c, response);
+                listView.setAdapter(adapter);
+                //Asocio el menu contextual a la vista de la lista
+                registerForContextMenu(listView);
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError response) {
+                Log.d("Response: ", response.toString());
+            }
+        });
+        gestorPeticiones.setCola(c);
+        gestorPeticiones.getCola().add(jsObjRequest);
+        Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
     }
 
     @Override

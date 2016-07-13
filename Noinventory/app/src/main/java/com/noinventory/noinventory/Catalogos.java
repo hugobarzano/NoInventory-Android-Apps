@@ -258,4 +258,42 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
             }
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String URL_BASE = "http://noinventory.cloudapp.net";
+        String URL_JSON = "/catalogosJson/";
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("username", datosUsuario.getNombre_usuario());
+        params.put("organizacion", datosUsuario.getOrganizacion());
+        params.put("flag", "True");
+        params.put("busqueda", "");
+
+
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Response: ", response.toString());
+                //actualizar lista
+                adapter = new CatalogoAdapter(c, response);
+                listView.setAdapter(adapter);
+                //Asocio el menu contextual a la vista de la lista
+                registerForContextMenu(listView);
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError response) {
+                Log.d("Response: ", response.toString());
+            }
+        });
+        gestorPeticiones.setCola(c);
+        gestorPeticiones.getCola().add(jsObjRequest);
+        Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
+    }
 }
+

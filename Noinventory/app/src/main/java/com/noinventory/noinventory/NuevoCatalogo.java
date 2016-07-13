@@ -3,20 +3,8 @@ package com.noinventory.noinventory;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Menu;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class NuevoCatalogo extends AppCompatActivity {
 
@@ -35,7 +23,7 @@ public class NuevoCatalogo extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
 
     }
-    @Override
+    /*@Override
     public void onBackPressed(){
         String URL_BASE =  "http://noinventory.cloudapp.net";
         String URL_JSON = "/catalogosJson/";
@@ -75,6 +63,6 @@ public class NuevoCatalogo extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main3, menu);
         return true;
-    }
+    }*/
 
 }

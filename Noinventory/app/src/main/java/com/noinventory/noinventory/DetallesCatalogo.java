@@ -4,21 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class DetallesCatalogo extends AppCompatActivity {
     Context c;
@@ -41,7 +31,7 @@ public class DetallesCatalogo extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient());
 
     }
-    @Override
+   /* @Override
     public void onBackPressed(){
         //peticion
         String URL_BASE =  "http://noinventory.cloudapp.net";
@@ -81,7 +71,7 @@ public class DetallesCatalogo extends AppCompatActivity {
         Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
         this.finish();
 
-    }
+    }*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main3, menu);
