@@ -1,7 +1,7 @@
 #NO-INVENTORY-Android
 ############################################################################
    APK:
-	[![No-Inventory-Android-apk](https://www.dropbox.com/s/xx672e199qvvwgb/android.jpg?dl=1)](https://www.dropbox.com/s/itzz91qe5lw1pew/app-debug.apk?dl=1)
+	[![No-Inventory-Android-apk](https://www.dropbox.com/s/xx672e199qvvwgb/android.jpg?dl=1)](https://www.dropbox.com/s/vzxdq6cyfvo27jv/NoInventory.apk?dl=1)
 
 ###Descripción
 Extensión de la plataforma de gestión de inventariado [No-Inventory](https://github.com/hugobarzano/NoInventory). Es la encargada de la tareas de clasificación dentro del almacen. Permite leer/escribir los codigos de barras, codigos qr o etiquetas nfc que identifican a los objetos.
