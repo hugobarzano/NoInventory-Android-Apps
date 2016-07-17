@@ -3,6 +3,7 @@ package com.noinventory.noinventory;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -25,7 +26,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Catalogos extends AppCompatActivity implements View.OnClickListener {
+public class Catalogos extends AppCompatActivity implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     public static ListView getListView() {
         return listView;
@@ -42,6 +43,8 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
     //adaptador con la lista de objetos item
     CatalogoAdapter adapter;
     Context c;
+    private SwipeRefreshLayout swipeRefreshLayout2;
+
 
     public final static String ACTIVIDAD_SCANER = "com.machine.hugo.SCANER";
     public final static String ACTIVIDAD_NFC = "com.machine.hugo.NFC";
@@ -55,6 +58,10 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogos);
+        swipeRefreshLayout2 = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout2);
+        swipeRefreshLayout2.setOnRefreshListener(this);
+        swipeRefreshLayout2.setRefreshing(true);
+
 
         // Obtener instancia de la lista
         busqueda = (EditText) findViewById(R.id.busqueda);
@@ -103,6 +110,8 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
 
         //Asocio el menu contextual a la vista de la lista
         registerForContextMenu(listView);
+        swipeRefreshLayout2.setRefreshing(false);
+
 
     }
 
@@ -294,6 +303,48 @@ public class Catalogos extends AppCompatActivity implements View.OnClickListener
         gestorPeticiones.setCola(c);
         gestorPeticiones.getCola().add(jsObjRequest);
         Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onRefresh() {
+        swipeRefreshLayout2.setRefreshing(true);
+
+        //peticion
+        String URL_BASE =  "http://noinventory.cloudapp.net";
+        String URL_JSON = "/catalogosJson/";
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("username", datosUsuario.getNombre_usuario());
+        params.put("organizacion", datosUsuario.getOrganizacion());
+        params.put("flag", "True");
+        params.put("busqueda","");
+
+
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, URL_BASE + URL_JSON, params, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d("Response: ", response.toString());
+                //actualizar lista
+                adapter = new CatalogoAdapter(c,response);
+                listView.setAdapter(adapter);
+                //Asocio el menu contextual a la vista de la lista
+                registerForContextMenu(listView);
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError response) {
+                Log.d("Response: ", response.toString());
+            }
+        });
+        gestorPeticiones.setCola(c);
+        gestorPeticiones.getCola().add(jsObjRequest);
+
+        Toast.makeText(this, "Lista Actualizada", Toast.LENGTH_SHORT).show();
+        swipeRefreshLayout2.setRefreshing(false);
+
     }
 }
 
